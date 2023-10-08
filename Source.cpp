@@ -40,18 +40,6 @@ public:
         }
         return false;
     }
-
-    void sendMessage(const std::string& senderLogin, const std::string& receiverLogin, const std::string& message) {
-        std::cout << senderLogin << " -> " << receiverLogin << ": " << message << std::endl;
-    }
-
-    void broadcastMessage(const std::string& senderLogin, const std::string& message) {
-        for (const User& user : users) {
-            if (user.getLogin() != senderLogin) {
-                std::cout << senderLogin << " -> " << user.getLogin() << ": " << message << std::endl;
-            }
-        }
-    }
     std::string findUserName(std::string login) {
         for (User user : users) {
             if (user.getLogin() == login) {
@@ -159,39 +147,11 @@ void tick() {
 }
 int main() {
    
-    chat.registerUser("user1", "password1", "User 1");
-    chat.registerUser("user2", "password2", "User 2");
-    chat.registerUser("user3", "password3", "User 3");
-
     while (true)
     {
         init();
         tick();
     }
-    // Вход в чат
-
-    //if (chat.Login() {
-    //    std::cout << "Login successful!" << std::endl;
-
-    //    // Отправка сообщений
-    //    std::string receiverLogin, message;
-    //    std::cout << "Enter receiver login: ";
-    //    std::cin >> receiverLogin;
-    //    std::cout << "Enter message: ";
-    //    std::cin.ignore(); // Игнорируем символ новой строки после ввода логина
-    //    std::getline(std::cin, message);
-
-    //    chat.sendMessage(login, receiverLogin, message);
-
-    //    // Обмен сообщениями между всеми пользователями
-    //    std::cout << "Enter broadcast message: ";
-    //    std::getline(std::cin, message);
-
-    //    chat.broadcastMessage(login, message);
-    //}
-    //else {
-    //    std::cout << "Invalid login or password!" << std::endl;
-    //}
 
     return 0;
 }
